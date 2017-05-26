@@ -1,0 +1,11 @@
+{
+  "name": "reacticity_proto1",
+  "version": "1.0.0",
+  "description": "Test app used to fetch city information from urbanoe.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
