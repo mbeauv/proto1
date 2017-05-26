@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
+import CityListItem from './city_list_item.jsx';
 
-class CitiesList extends React.Component {
+const CityList = (props) => {
 
-  render() {
-    return (
-      <div>
-        <h1>Cities</h1>
-      </div>
-    );
-  }
+  const cities = props.cities.map((city) => {
+    return <CityListItem key={city.name} city={city} />
+  });
 
+  return (
+    <div>
+      <h1>City List</h1>
+      <ul className="col-md-4 list-group">
+        {cities}
+      </ul>
+    </div>
+  );
 }
 
-export default CitiesList;
+export default CityList;
