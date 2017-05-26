@@ -8,7 +8,7 @@ const CityList = (props) => {
   });
 
   return (
-    <div>
+    <div className="panel">
       <h1>City List</h1>
       <ul className="col-md-4 list-group">
         {cities}

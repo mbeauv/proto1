@@ -25,7 +25,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="container">
         <CitiesList cities={this.state.cities}/>
       </div>
     );
