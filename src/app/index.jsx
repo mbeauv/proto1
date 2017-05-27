@@ -1,34 +1,15 @@
 import React from 'react';
-import {render} from 'react-dom';
-var request = require('sync-request');
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
 
-import CitiesList from './cities_list.jsx';
+import App from './components/app.jsx';
+import reducers from './reducers/index.jsx';
 
-class App extends React.Component {
+const createStoreWithMiddleware = applyMiddleware()(createStore);
 
-  constructor(props) {
-    super(props);
-
-    var res = request('GET', 'http://localhost:3000/mobile/cities', {
-      'headers': {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    });
-
-    this.state = {
-      cities: JSON.parse(res.getBody())
-    }
-
-  }
-
-  render () {
-    return (
-      <div className="container">
-        <CitiesList cities={this.state.cities}/>
-      </div>
-    );
-  }
-}
-
-render(<App/>, document.getElementById('app'));
+ReactDOM.render(
+  <Provider store={createStoreWithMiddleware(reducers)}>
+    <App />
+  </Provider>
+  , document.querySelector('#app'));
