@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import CityListItem from './city_list_item.jsx';
 
-const CityList = (props) => {
+const CityList = ({cities}) => {
 
-  const cities = props.cities.map((city) => {
-    return <CityListItem key={city.name} city={city} />
+  const city_items = cities.map((city) => {
+    return <CityListItem key={city.id} city={city} />
   });
 
   return (
     <div className="panel">
       <h1>City List</h1>
       <ul className="col-md-4 list-group">
-        {cities}
+        {city_items}
       </ul>
     </div>
   );
