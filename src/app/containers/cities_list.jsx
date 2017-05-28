@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchCities } from '../actions/index.jsx';
 
 import CityListItem from '../components/city_list_item.jsx';
 
 class CityList extends Component {
 
+  componentDidMount() {
+    this.props.fetchCities();
+  }
+  
   renderCities() {
     return this.props.cities.map((city) => {
       return <CityListItem key={city.id} city={city} />
@@ -29,4 +35,8 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(CityList);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({fetchCities}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CityList);
